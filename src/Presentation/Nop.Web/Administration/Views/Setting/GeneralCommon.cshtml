@@ -23,7 +23,7 @@
     </div>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             bindBootstrapTabSelectEvent('generalsettings-edit');
             $("#@Html.FieldIdFor(model => model.StoreInformationSettings.SitemapEnabled)").click(toggleSitemapSettings);
             toggleSitemapSettings();
@@ -44,7 +44,6 @@
             @Html.Action("StoreScopeConfiguration", "Setting")
             @Html.Action("Mode", "Setting")
             @Html.ValidationSummary(false)
-
 
             <div class="panel-group">
                 <div class="panel panel-default">
@@ -191,7 +190,7 @@
                             <div class="col-md-3">
                                 @Html.OverrideStoreCheckboxFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers_OverrideForStore, model => model.StoreInformationSettings.SitemapIncludeManufacturers, Model.ActiveStoreScopeConfiguration)
                                 @Html.NopLabelFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
-                            </div>
+                    </div>
                             <div class="col-md-9">
                                 @Html.NopEditorFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
                                 @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
@@ -201,7 +200,7 @@
                             <div class="col-md-3">
                                 @Html.OverrideStoreCheckboxFor(model => model.StoreInformationSettings.SitemapIncludeProducts_OverrideForStore, model => model.StoreInformationSettings.SitemapIncludeProducts, Model.ActiveStoreScopeConfiguration)
                                 @Html.NopLabelFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
-                            </div>
+                </div>
                             <div class="col-md-9">
                                 @Html.NopEditorFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
                                 @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
@@ -547,7 +546,7 @@
                         </div>
                     </div>
                     <script type="text/javascript">
-                $(document).ready(function() {
+                        $(document).ready(function () {
                     $("#@Html.FieldIdFor(model => model.SecuritySettings.CaptchaEnabled)").click(toggleReCaptcha);
                     toggleReCaptcha();
                 });
@@ -711,6 +710,7 @@
                 {
                             <div class="form-group">
                                 <div class="col-md-3">
+                                    <div class="label-wrapper">
                                     <label class="control-label">
                                         @if (Model.FullTextSettings.Enabled)
                                         {
@@ -721,6 +721,7 @@
                                             @T("Admin.Configuration.Settings.GeneralCommon.FullTextSettings.CurrenlyDisabled")
                                         }
                                     </label>
+                                </div>
                                 </div>
                                 <div class="col-md-9">
                                     <button type="submit" name="togglefulltext" class="btn btn-primary">

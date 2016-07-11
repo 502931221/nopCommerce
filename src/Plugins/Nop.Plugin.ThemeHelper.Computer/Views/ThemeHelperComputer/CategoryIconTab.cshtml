@@ -1,0 +1,53 @@
+﻿@model Nop.Plugin.ThemeHelper.Computer.Models.CategoryIconModel
+@using Nop.Web.Framework
+<table>
+
+    <tr>
+        <td colspan="2" width="100%">
+            <b>@T("Computer.Category.MenuIcon.Note")</b>
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.IconId)
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.IconId)
+            @Html.ValidationMessageFor(model => model.IconId)
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="left">
+            <input type="button" id="saveCategoryIcon" class="k-button" value="@T("Admin.Common.Save")" />
+            <span id="SaveProcessImage" class="qq-upload-spinner" style="display: none; margin-left: 10px"></span>
+            <span id="SaveProcessResult" style="margin-left: 10px"></span>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#saveCategoryIcon').click(function () {
+                        var iconId = $("#@Html.FieldIdFor(model => model.IconId)").val();
+                        var categoryId = $("#Id").val();
+                        $('#SaveProcessResult').text("");
+                        $('#saveCategoryIcon').attr('disabled', true);
+                        $('#SaveProcessImage').show();
+                        $.ajax({
+                            cache: false,
+                            type: "POST",
+                            url: "@(Url.Action("CategoryIconAdd", "ThemeHelperComputer"))",
+                            data: { "pictureId": iconId, "categoryId": categoryId },
+                            success: function (data) {
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert('Failed to add product picture.');
+                            },
+                            complete: function (xhr, ajaxOptions, thrownError) {
+                                $('#saveCategoryIcon').attr('disabled', false);
+                                $('#SaveProcessImage').hide(500);
+                                $('#SaveProcessResult').text("@T("Computer.ChangesSaved")");
+                            }
+                        });
+                    });
+                });
+            </script>
+        </td>
+    </tr>
+</table>
